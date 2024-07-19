@@ -13,8 +13,8 @@ import kotlinx.coroutines.withContext
 
 class UsersViewModel(private val usersRepository : UsersRepository) : ViewModel() {
 
-    private val usersUpdatedAvailableLiveData = MutableLiveData<Boolean>()
-    private val users = ArrayList<User>()
+    val usersUpdatedAvailableLiveData = MutableLiveData<Boolean>()
+    val users = ArrayList<User>()
 
     private var pageNumber : Int = 0
 
@@ -29,7 +29,7 @@ class UsersViewModel(private val usersRepository : UsersRepository) : ViewModel(
         }
     }
 
-    private val userPostedLiveData = MutableLiveData<Boolean>()
+    val userPostedLiveData = MutableLiveData<Boolean>()
     fun addUser(userPostModel: UserPostModel){
         CoroutineScope(Dispatchers.IO).launch {
             val responsePostUser = usersRepository.addUser(userPostModel)
